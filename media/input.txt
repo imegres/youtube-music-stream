@@ -1,0 +1,3 @@
+ffconcat version 1.0
+file '/Users/megres/Documents/Projects/node-yt/media/conformed/vibes1.m4a'
+file '/Users/megres/Documents/Projects/node-yt/media/conformed/The Velvet Night.m4a'

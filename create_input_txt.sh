@@ -21,13 +21,13 @@ fi
 
 # Prepara arquivos de áudio
 for f in "$BASE_DIR"/music/*.mp3; do
-  ffmpeg -y -i "$f" -map 0:a -ac 2 -ar 44100 -c:a aac "$MUSIC_DIR/$(basename "${f%.*}").m4a"
+  ffmpeg -y -i "$f" -map 0:a -ac 2 -ar 44100 -c:a aac "$MUSIC_DIR/$(basename "${f%.*}").mp3"
 done
 
-# Verifica se o diretório de músicas conformadas contém arquivos M4A
-m4a_files=$(ls "$MUSIC_DIR"/*.m4a 2> /dev/null)
-if [ -z "$m4a_files" ]; then
-  echo "Erro: Nenhum arquivo M4A foi encontrado no diretório $MUSIC_DIR."
+# Verifica se o diretório de músicas conformadas contém arquivos mp3
+mp3_files=$(ls "$MUSIC_DIR"/*.mp3 2> /dev/null)
+if [ -z "$mp3_files" ]; then
+  echo "Erro: Nenhum arquivo mp3 foi encontrado no diretório $MUSIC_DIR."
   exit 1
 fi
 
@@ -35,7 +35,7 @@ fi
 echo "ffconcat version 1.0" > "$OUTPUT_FILE"
 
 # Adiciona cada arquivo de música ao input.txt
-for file in "$MUSIC_DIR"/*.m4a; do
+for file in "$MUSIC_DIR"/*.mp3; do
   if [ -e "$file" ]; then
     echo "file '$file'" >> "$OUTPUT_FILE"
   else

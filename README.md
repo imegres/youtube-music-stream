@@ -1,7 +1,7 @@
 Cria pasta conformed
 
 echo "ffconcat version 1.0" > input.txt
-for file in media/conformed/*.m4a; do
+for file in media/conformed/*.mp3; do
   echo "file '$(pwd)/$file'" >> input.txt
 done
 
@@ -19,7 +19,7 @@ OUTPUT_FILE="$(pwd)/input.txt"
 echo "ffconcat version 1.0" > $OUTPUT_FILE
 
 # Adiciona cada arquivo de música ao input.txt
-for file in $MUSIC_DIR/*.m4a; do
+for file in $MUSIC_DIR/*.mp3; do
   echo "file '$(pwd)/$file'" >> $OUTPUT_FILE
 done
 

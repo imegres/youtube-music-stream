@@ -33,7 +33,7 @@ const startStream = (streamUrl: string) => {
       '-pix_fmt', 'yuv420p',
       '-f', 'flv'
     ])
-    .output(streamUrl)
+    .output('video.flv')
     .on('start', () => {
       console.log('Live stream started!');
     })

@@ -8,6 +8,9 @@
   "peerDependencies": {
     "typescript": "^5.5.4"
   },
+  "scripts": {
+    "start": "bun ./src/index.ts"
+  },
   "dependencies": {
     "@types/fluent-ffmpeg": "^2.1.25",
     "@types/node": "^22.0.2",

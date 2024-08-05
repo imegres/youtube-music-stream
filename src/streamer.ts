@@ -9,20 +9,20 @@ const inputTxtPath = path.join(mediaDir, 'input.txt');
 
 let stream: ffmpeg.FfmpegCommand | null = null;
 
-const createPlaylistFile = (directory: string, repetitions = 20) => {
-  const files = fs.readdirSync(directory).filter(file => file.endsWith('.m4a'));
+const createPlaylistFile = async (repetitions = 20) => {
+  const files = fs.readdirSync(musicDir).filter(file => file.endsWith('.m4a'));
   let playlistContent = 'ffconcat version 1.0\n';
 
   for (let i = 0; i < repetitions; i++) {
-    playlistContent += files.map(file => `file '${path.join(directory, file)}'`).join('\n') + '\n';
+    playlistContent += files.map(file => `file '${path.join(musicDir, file)}'`).join('\n') + '\n';
   }
 
   console.log('Playlist content:', playlistContent); // Adicionado log
-  fs.writeFileSync(path.join(directory, 'input.txt'), playlistContent, 'utf8');
+  await fs.writeFileSync(path.join(mediaDir, 'input.txt'), playlistContent, 'utf8');
 };
 
-const startStream = (streamUrl: string) => {
-  createPlaylistFile(musicDir, 30);
+const startStream = async (streamUrl: string) => {
+  await createPlaylistFile(30);
 
   stream = ffmpeg()
     .addInput(background)

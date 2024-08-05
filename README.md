@@ -1,7 +1,7 @@
-Cria pasta conformed
+Cria pasta music
 
 echo "ffconcat version 1.0" > input.txt
-for file in media/conformed/*.mp3; do
+for file in media/music/*.mp3; do
   echo "file '$(pwd)/$file'" >> input.txt
 done
 
@@ -10,7 +10,7 @@ done
 #!/bin/bash
 
 # Diretório das músicas conformadas
-MUSIC_DIR="media/conformed"
+MUSIC_DIR="media/music"
 
 # Caminho absoluto do input.txt
 OUTPUT_FILE="$(pwd)/input.txt"

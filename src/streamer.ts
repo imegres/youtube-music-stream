@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 
 const mediaDir = path.join(__dirname, '..', 'media');
-const musicDir = path.join(mediaDir, 'conformed'); // Usar a pasta com arquivos processados
+const musicDir = path.join(mediaDir, 'music'); // Usar a pasta com arquivos processados
 const background = path.join(mediaDir, 'bg.mp4'); // Use bg.png para imagem de fundo
 const inputTxtPath = path.join(mediaDir, 'input.txt');
 

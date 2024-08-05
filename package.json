@@ -9,7 +9,7 @@
     "typescript": "^5.5.4"
   },
   "scripts": {
-    "start": "./create_input_txt.sh && bun ./src/index.ts"
+    "start": "bun ./src/index.ts"
   },
   "dependencies": {
     "@types/fluent-ffmpeg": "^2.1.25",

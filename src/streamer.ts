@@ -9,20 +9,11 @@ const inputTxtPath = path.join(mediaDir, 'playlist.txt');
 
 let stream: ffmpeg.FfmpegCommand | null = null;
 
-// Função para embaralhar uma array
-const shuffleArray = (array: string[]) => {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }         
-};
-
 const createPlaylistFile = async (repetitions = 20) => {
   const files = fs.readdirSync(musicDir).filter(file => file.endsWith('.mp3'));
   let playlistContent = 'ffconcat version 1.0\n';
 
   for (let i = 0; i < repetitions; i++) {
-    shuffleArray(files); // Embaralhar a lista de arquivos
     playlistContent += files.map(file => `file '${path.join(musicDir, file)}'`).join('\n') + '\n';
   }
 

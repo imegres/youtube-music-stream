@@ -4,16 +4,25 @@ import path from 'path';
 
 const mediaDir = path.join(__dirname, '..', 'media');
 const musicDir = path.join(mediaDir, 'music'); // Usar a pasta com arquivos processados
-const background = path.join(mediaDir, 'bg.mp4'); // Use bg.png para imagem de fundo
-const inputTxtPath = path.join(mediaDir, 'input.txt');
+const background = path.join(mediaDir, 'video/bg.mp4'); // Use bg.png para imagem de fundo
+const inputTxtPath = path.join(mediaDir, 'playlist.txt');
 
 let stream: ffmpeg.FfmpegCommand | null = null;
+
+// Função para embaralhar uma array
+const shuffleArray = (array: string[]) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }         
+};
 
 const createPlaylistFile = async (repetitions = 20) => {
   const files = fs.readdirSync(musicDir).filter(file => file.endsWith('.mp3'));
   let playlistContent = 'ffconcat version 1.0\n';
 
   for (let i = 0; i < repetitions; i++) {
+    shuffleArray(files); // Embaralhar a lista de arquivos
     playlistContent += files.map(file => `file '${path.join(musicDir, file)}'`).join('\n') + '\n';
   }
 

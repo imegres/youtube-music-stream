@@ -27,7 +27,7 @@ const createPlaylistFile = async (repetitions = 20) => {
   }
 
   console.log('Playlist content:', playlistContent); // Adicionado log
-  await fs.writeFileSync(path.join(mediaDir, 'input.txt'), playlistContent, 'utf8');
+  await fs.writeFileSync(path.join(mediaDir, 'playlist.txt'), playlistContent, 'utf8');
 };
 
 const startStream = async (streamUrl: string) => {

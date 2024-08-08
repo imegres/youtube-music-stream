@@ -55,7 +55,9 @@ const startStream = async (streamUrl: string) => {
       '-tune', 'stillimage',
       '-crf', '18',
       '-pix_fmt', 'yuv420p',
-      '-f', 'flv'
+      '-f', 'flv',
+      '-g', '48', // Definindo a frequência de frame-chave para 48 frames (para 2 segundos a 24fps)
+      '-keyint_min', '48', // Configura o mínimo de intervalos de frame-chave para 48 frames
     ])
     .output(streamUrl)
     .on('start', () => {

@@ -7,7 +7,7 @@ const mediaDir = path.join(__dirname, '..', 'media');
 const musicDir = path.join(mediaDir, 'music'); // Usar a pasta com arquivos processados
 const background = path.join(mediaDir, 'video/bg.mp4'); // Use bg.png para imagem de fundo
 
-let stream: ffmpeg.FfmpegCommand | null = null;
+let stream: ffmpeg.FfmpegCommand;
 
 const getShuffledPlaylist = () => {
   const files = fs.readdirSync(musicDir).filter(file => file.endsWith('.mp3'));
@@ -23,7 +23,7 @@ const startStream = async (streamUrl: string) => {
 
   console.log('Playlist:', playlist);
 
-  stream = ffmpeg().setFfmpegPath(ffmpegPath);
+  stream = ffmpeg().setFfmpegPath(ffmpegPath!);
 
   // Adiciona o background e define o loop
   stream.addInput(background).inputOptions(['-stream_loop', '-1']);
